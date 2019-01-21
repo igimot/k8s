@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # local machine ip address
-export K8SHA_IPLOCAL=172.26.133.21
+export K8SHA_IPLOCAL=192.168.88.210
 
 # local machine etcd name, options: etcd1, etcd2, etcd3, etcd4, etcd5
 export K8SHA_ETCDNAME=etcd1
@@ -13,44 +13,44 @@ export K8SHA_KA_STATE=MASTER
 export K8SHA_KA_PRIO=102
 
 # local machine keepalived network interface name config, for example: eth0
-export K8SHA_KA_INTF=ens18
+export K8SHA_KA_INTF=enp0s3
 
 #######################################
 # all masters settings below must be same
 #######################################
 
 # master keepalived virtual ip address
-export K8SHA_IPVIRTUAL=172.26.133.20
+export K8SHA_IPVIRTUAL=192.168.88.220
 
 # master01 ip address
-export K8SHA_IP1=172.26.133.21
+export K8SHA_IP1=192.168.88.210
 
 # master02 ip address
-export K8SHA_IP2=172.26.133.22
+#xport K8SHA_IP2=172.26.133.22
 
 # master03 ip address
-export K8SHA_IP3=172.26.133.23
+#export K8SHA_IP3=172.26.133.23
 
 # master04 ip address
-export K8SHA_IP4=172.26.133.24
+#export K8SHA_IP4=172.26.133.24
 
 # master05 ip address
-export K8SHA_IP5=172.26.133.25
+#export K8SHA_IP5=172.26.133.25
 
 # master01 hostname
-export K8SHA_HOSTNAME1=hb-master01
+export K8SHA_HOSTNAME1=kub00
 
 # master02 hostname
-export K8SHA_HOSTNAME2=hb-master02
+export K8SHA_HOSTNAME2=kub01
 
 # master03 hostname
-export K8SHA_HOSTNAME3=hb-master03
+#export K8SHA_HOSTNAME3=hb-master03
 
 # master04 hostname
-export K8SHA_HOSTNAME4=hb-master04
+#export K8SHA_HOSTNAME4=hb-master04
 
 # master04 hostname
-export K8SHA_HOSTNAME5=hb-master05
+#export K8SHA_HOSTNAME5=hb-master05
 
 # keepalived auth_pass config, all masters must be same
 export K8SHA_KA_AUTH=56cf8dd754c90194d1600c483e10abfr
@@ -75,9 +75,6 @@ sed \
 -e "s/K8SHA_IPLOCAL/$K8SHA_IPLOCAL/g" \
 -e "s/K8SHA_IP1/$K8SHA_IP1/g" \
 -e "s/K8SHA_IP2/$K8SHA_IP2/g" \
--e "s/K8SHA_IP3/$K8SHA_IP3/g" \
--e "s/K8SHA_IP4/$K8SHA_IP4/g" \
--e "s/K8SHA_IP5/$K8SHA_IP5/g" \
 -e "s/ETCD_TOKEN/$ETCD_TOKEN/g" \
 etcd/docker-compose.yaml.tpl > etcd/docker-compose.yaml
 
@@ -103,9 +100,6 @@ echo 'set keepalived config file success: /etc/keepalived/keepalived.conf'
 sed \
 -e "s/K8SHA_IP1/$K8SHA_IP1/g" \
 -e "s/K8SHA_IP2/$K8SHA_IP2/g" \
--e "s/K8SHA_IP3/$K8SHA_IP3/g" \
--e "s/K8SHA_IP4/$K8SHA_IP4/g" \
--e "s/K8SHA_IP5/$K8SHA_IP5/g" \
 nginx-lb/nginx-lb.conf.tpl > nginx-lb/nginx-lb.conf
 
 echo 'set nginx load balancer config file success: nginx-lb/nginx-lb.conf'
@@ -114,14 +108,8 @@ echo 'set nginx load balancer config file success: nginx-lb/nginx-lb.conf'
 sed \
 -e "s/K8SHA_HOSTNAME1/$K8SHA_HOSTNAME1/g" \
 -e "s/K8SHA_HOSTNAME2/$K8SHA_HOSTNAME2/g" \
--e "s/K8SHA_HOSTNAME3/$K8SHA_HOSTNAME3/g" \
--e "s/K8SHA_HOSTNAME4/$K8SHA_HOSTNAME4/g" \
--e "s/K8SHA_HOSTNAME5/$K8SHA_HOSTNAME5/g" \
 -e "s/K8SHA_IP1/$K8SHA_IP1/g" \
 -e "s/K8SHA_IP2/$K8SHA_IP2/g" \
--e "s/K8SHA_IP3/$K8SHA_IP3/g" \
--e "s/K8SHA_IP4/$K8SHA_IP4/g" \
--e "s/K8SHA_IP5/$K8SHA_IP5/g" \
 -e "s/K8SHA_IPVIRTUAL/$K8SHA_IPVIRTUAL/g" \
 -e "s/K8SHA_TOKEN/$K8SHA_TOKEN/g" \
 -e "s/K8SHA_CIDR/$K8SHA_CIDR/g" \

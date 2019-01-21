@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hello-node
+  namespace: kube-system
+  labels:
+    app: hello-node
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello-node
+  template:
+    metadata:
+      labels:
+        app: hello-node
+    spec:
+      containers:
+      - name: hello-node
+        image: vwarship/hello-world:latest
+        ports:
+        - containerPort: 80
+-------------
+apiVersion: v1
+kind: Service
+metadata:
+  name: dhello-node
+  namespace: kube-system
+  labels:
+    k8s-app: hello-node
+spec:
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    k8s-app: hello-node

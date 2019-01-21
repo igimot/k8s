@@ -7,6 +7,6 @@ services:
     volumes:
     - /root/kubernetes-ha/nginx-lb/nginx-lb.conf:/etc/nginx/nginx.conf
     ports:
-    - 16443:16443
+    - 6443:6443
     restart: always
 
