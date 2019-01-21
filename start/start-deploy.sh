@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-#openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "/CN=socks.kub.loc/O=nginx"
-#kubectl create secret tls tls-secret --key tls.key --cert tls.crt
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "/CN=socks.kub.loc/O=nginx"
+kubectl create secret tls testsecret-tls --key tls.key --cert tls.crt
 echo "========================================="
 echo "|| ARE YOU SURE ? ||"
 echo "========================================="
@@ -26,7 +26,7 @@ EOF
 kubectl create secret generic basic-auth --from-file=auth
 rm -fv auth
 kubectl get secret basic-auth -o yaml
-kubectl create -f tls-exemple.yaml
+#kubectl create -f tls-exemple.yaml
 kubectl create -f default-backend.yaml
 kubectl create -f nginx-ingress-controller.yaml
 kubectl create -f hello-node.yaml
