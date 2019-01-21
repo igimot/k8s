@@ -30,3 +30,4 @@ kubectl create -f tls-exemple.yaml
 kubectl create -f default-backend.yaml
 kubectl create -f nginx-ingress-controller.yaml
 kubectl create -f hello-node.yaml
+kubectl create -f hello-ingress.yaml
