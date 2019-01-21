@@ -2,9 +2,9 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   annotations:
-    nginx.ingress.kubernetes.io/server-snippet: |
-    proxy_ssl_name socks.kub.loc;
-    proxy_ssl_server_name on;
+    nginx.ingress.kubernetes.io/server-snippet: proxy_ssl_name socks.kub.loc
+
+    nginx.ingress.kubernetes.io/server-snippet: proxy_ssl_server_name on
     # type of authentication
     nginx.ingress.kubernetes.io/auth-type: basic
     # name of the secret that contains the user/password definitions
