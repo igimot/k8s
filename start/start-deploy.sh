@@ -18,7 +18,7 @@ case "$contStartDeploy" in
     #kubectl create -f nginx-ingress-controller.yaml
     kubectl create -f nginx-ingress-create.yaml
     kubectl create -f hello-node.yaml
-    kubectl create -f hello-ingress.yaml
+    #kubectl create -f hello-ingress.yaml
 
          ;;
     n|N) echo "Ok it's your choice. Bay Bay"
