@@ -5,5 +5,5 @@ data:
 kind: Secret
 metadata:
   name: testsecret-tls
-  namespace: default
+  namespace: kube-system
 type: Opaque
