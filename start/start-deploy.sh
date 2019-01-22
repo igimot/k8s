@@ -6,8 +6,9 @@ echo "========================================="
 read contStartDeploy
 case "$contStartDeploy" in
     y|Y) echo "Ok. Its test docker"
-    openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "/CN=socks.kub.loc/O=nginx"
-    kubectl create secret tls testsecret-tls --key tls.key --cert tls.crt
+    openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /tmp/tls.key -out /tmp/tls.crt -subj "/CN=socks.kub.loc/"
+    #openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "/CN=socks.kub.loc/O=nginx"
+    kubectl create secret tls tls-secret --key /tmp/tls.key --cert /tmp/tls.crt
     echo "test_user1::admin
     wtf_admin:5IXYK2dcdc77676gg" > auth
     kubectl create secret generic basic-auth --from-file=auth

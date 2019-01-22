@@ -66,15 +66,15 @@ metadata:
         return 302 /coffee;
       }
 spec:
+  tls:
+  - hosts:
+    - socks.kub.loc
+    secretName: tls-secret
   rules:
   - host: socks.kub.loc
     http:
       paths:
-      - path: /
-        backend:
+        - backend:
           serviceName: hello-node-test-1
           servicePort: 80
-      - path: /coffee
-        backend:
-          serviceName: coffee-svc
-          servicePort: 80
+         path: /
