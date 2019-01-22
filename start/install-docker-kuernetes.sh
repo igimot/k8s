@@ -20,10 +20,6 @@ read contStartCompose
 case "$contStartCompose" in
     y|Y) echo "Ok. Its test docker"
     docker run hello-world
-    echo "========================================="
-    echo "|| Test GOOD ?||"
-    echo "========================================="
-    read testGoodOrNot
          ;;
     n|N) echo "Ok it's your choice. Bay Bay"
         exit 0
@@ -31,7 +27,7 @@ case "$contStartCompose" in
     *) echo "Sorry need type"
         ;;
 esac
-rm -rf /var/lib/docker
+
 #echo -n "" > /tmp/s.sh
 ######################   install k8s master   #######################
 apt-get update && apt-get install -y apt-transport-https

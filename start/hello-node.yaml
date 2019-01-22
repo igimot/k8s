@@ -38,9 +38,36 @@ metadata:
     tier: backend
 spec:
   ports:
-  - port: 6379
+  - port: 80
     targetPort: 6379
   selector:
     app: hello-node
     role: master
     tier: backend
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hello-node
+  annotations:
+    nginx.org/proxy-connect-timeout: "30s"
+    ingress.kubernetes.io/ssl-redirect:
+    nginx.org/proxy-read-timeout: "20s"
+    nginx.org/client-max-body-size: "4m"
+    nginx.org/server-snippets: |
+      location / {
+        return 302 /coffee;
+      }
+spec:
+  rules:
+  - host: socks.kub.loc
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: hello-node-test-1
+          servicePort: 80
+      - path: /coffee
+        backend:
+          serviceName: coffee-svc
+          servicePort: 80

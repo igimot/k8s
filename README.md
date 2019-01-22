@@ -1,2 +1,6 @@
-# kubernetes-multimaster
-Описание по развертыванию на русском языке https://habr.com/post/358264/
+# Installation
+
+This folder includes Kubernetes manifests for installing NGINX or NGINX Plus Ingress controller. Read the installation instructions [here](../docs/installation.md).
+
+
+
