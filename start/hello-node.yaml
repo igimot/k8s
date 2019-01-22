@@ -32,18 +32,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: hello-node-test-1
-  labels:
-    app: hello-node
-    role: master
-    tier: backend
 spec:
   ports:
   - port: 80
     targetPort: 6379
-  selector:
-    app: hello-node
-    role: master
-    tier: backend
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -74,7 +66,7 @@ spec:
   - host: socks.kub.loc
     http:
       paths:
-        - backend:
-          serviceName: hello-node-test-1
-          servicePort: 80
-         path: /
+        - path: /
+          backend:
+            serviceName: hello-node-test-1
+            servicePort: 80
