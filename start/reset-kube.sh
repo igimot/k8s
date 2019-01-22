@@ -4,4 +4,5 @@ cd
 rm -rf k8s
 echo "GOOOD"
 git clone https://github.com/igimot/k8s.git
-cd ~/k8s/start
+
+mv -rf ~/k8s/ /tmp
