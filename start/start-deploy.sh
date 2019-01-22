@@ -11,7 +11,7 @@ case "$contStartDeploy" in
     echo "test_user1::admin
     wtf_admin:5IXYK2dcdc77676gg" > auth
     kubectl create secret generic basic-auth --from-file=auth
-    rm -fv auth
+    #rm -fv auth
     kubectl get secret basic-auth -o yaml
     kubectl create -f default-backend.yaml
     #kubectl create -f nginx-ingress-controller.yaml
