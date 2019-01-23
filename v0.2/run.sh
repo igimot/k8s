@@ -9,7 +9,7 @@ echo "Run install docker?"
 read contStartCompose
 case "$contStartCompose" in
     y|Y) echo "Ok."
-    ( exec "/pro/install-docker.sh" )
+        ( exec "/pro/install-docker.sh" )
         #source install-docker.sh
         #exec "install-docker.sh"
          ;;
