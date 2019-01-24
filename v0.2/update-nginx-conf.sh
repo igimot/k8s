@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-docker cp nginx-proxy:/etc/nginx/nginx.conf /host/path/nginx.conf
+docker cp /pro/build/nginx/conf/nginx.conf nginx-proxy:/etc/nginx/nginx.conf
